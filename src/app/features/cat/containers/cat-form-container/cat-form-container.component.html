@@ -1,0 +1,8 @@
+<div class="container">
+  <app-cat-form
+    (remove)="remove($event)"
+    (save)="save($event)"
+    [cat$]="cat$"
+    [cat]="cat$ | async"
+  ></app-cat-form>
+</div>

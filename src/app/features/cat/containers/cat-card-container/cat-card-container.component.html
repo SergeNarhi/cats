@@ -1,0 +1,13 @@
+<mat-toolbar *ngIf="cat$ | async as cat">
+  <button [routerLink]="['/cats', cat?._id, 'edit']" mat-button>Edit</button>
+  <button (click)="remove(cat?._id)" color="warn" mat-button>
+    Remove
+  </button></mat-toolbar
+>
+<div class="container cat-card__wrap">
+  <app-cat-card
+    (like)="like($event)"
+    (unlike)="unlike($event)"
+    [cat]="cat$ | async"
+  ></app-cat-card>
+</div>

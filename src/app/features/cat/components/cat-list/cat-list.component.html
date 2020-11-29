@@ -1,0 +1,15 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="start"
+  fxLayoutGap="32px"
+>
+  <app-cat-card
+    (like)="onLike($event)"
+    (select)="openCatForm($event)"
+    (unlike)="onUnlike($event)"
+    *ngFor="let cat of cats"
+    [cat]="cat"
+    fxFlex="300px"
+  >
+  </app-cat-card>
+</div>

@@ -1,0 +1,28 @@
+<mat-card (click)="onSelect()" class="cat-card">
+  <mat-card-header>
+    <mat-card-title>{{ cat?.name }}</mat-card-title>
+  </mat-card-header>
+  <img
+    *ngIf="cat?.img"
+    [alt]="cat?.description"
+    [src]="cat?.img"
+    mat-card-image
+  />
+  <mat-card-content>
+    <p>
+      {{ cat?.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="onUnlike($event)" *ngIf="cat?.like; else like" mat-button>
+      <mat-icon color="primary">favorite</mat-icon>
+      UNLIKE
+    </button>
+    <ng-template #like>
+      <button (click)="onLike($event)" mat-button>
+        <mat-icon>favorite_border</mat-icon>
+        LIKE
+      </button>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>

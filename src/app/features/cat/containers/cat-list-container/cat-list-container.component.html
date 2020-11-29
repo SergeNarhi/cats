@@ -1,0 +1,10 @@
+<mat-toolbar>
+  <button mat-button routerLink="/cats/new">Add</button>
+</mat-toolbar>
+<div class="container">
+  <app-cat-list
+    (like)="like($event)"
+    (unlike)="unlike($event)"
+    [cats]="cats$ | async"
+  ></app-cat-list>
+</div>

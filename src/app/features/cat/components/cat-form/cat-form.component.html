@@ -1,0 +1,53 @@
+<form [formGroup]="catForm">
+  <mat-card class="cat-form__card">
+    <mat-card-content fxLayout="column" fxLayoutGap="16px">
+      <mat-form-field fxFlex="nogrow">
+        <mat-label>Кличка</mat-label>
+        <input
+          formControlName="name"
+          matInput
+          maxlength="50"
+          placeholder="Кличка"
+        />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="nogrow">
+        <mat-label>Описание</mat-label>
+        <textarea
+          formControlName="description"
+          matInput
+          maxlength="500"
+          placeholder="Описание"
+        ></textarea>
+      </mat-form-field>
+
+      <input
+        #csvInput
+        (change)="csvInputChange($event)"
+        hidden="true"
+        onclick="this.value=null"
+        type="file"
+      />
+      <button
+        (click)="csvInput.click()"
+        color="primary"
+        fxFlex="nogrow"
+        mat-flat-button
+      >
+        Select image
+      </button>
+    </mat-card-content>
+    <img [src]="catForm?.get('img')?.value" mat-card-image />
+    <mat-card-actions fxLayout="row" fxLayoutGap="16px">
+      <button
+        (click)="onSave()"
+        [disabled]="catForm?.invalid || catForm?.pristine"
+        color="primary"
+        fxFlex
+        mat-raised-button
+      >
+        Save
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
